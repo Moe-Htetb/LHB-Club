@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Font Awesome for icons -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Shopping Cart</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+      }
+
+      /* -------------------------Header start----------------------- */
+      .logo {
+        font-size: 30px;
+        color: #e74444;
+        font-weight: bold;
+      }
+
+      nav {
+        position: absolute;
+        top: 0;
+        display: flex;
+        z-index: 100;
+        justify-content: space-between;
+        padding: 20px 20px;
+        position: fixed;
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        background-color: white;
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        column-gap: 5rem;
+      }
+      .navbar li {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+      }
+      .navbar a {
+        color: black;
+        font-size: 17px;
+      }
+      .navbar .a::after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 3px;
+        background-color: #e74444;
+        left: 0%;
+        bottom: -1px;
+        transition: 0.5s;
+      }
+      .navbar .a:hover::after {
+        width: 100%;
+      }
+
+      .dropdown {
+        display: inline-block;
+        position: relative;
+      }
+      .dropdown #brand1 {
+        font-size: 17px;
+        display: block;
+        color: black;
+      }
+      .dropdown .content {
+        background-color: #ffffffff;
+        display: none;
+        position: absolute;
+        left: -20px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      }
+      .dropdown:hover .content {
+        top: 29px;
+        display: block;
+        padding: 8px 20px;
+        line-height: 30px;
+      }
+
+      .dropdown a {
+        font-size: 14px;
+        color: black;
+        letter-spacing: 1px;
+        padding: 1px 3px;
+      }
+      .content a:hover {
+        color: white;
+        background-color: #e74444;
+        opacity: 1;
+        border-radius: 2px;
+      }
+      .right-elements {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #search-box {
+        width: 200px;
+        transition: 0.5s;
+        top: -40px;
+        right: 210px;
+        position: absolute;
+        height: 35px;
+        border-radius: 5px;
+        outline: none;
+        font-size: 15px;
+        margin-left: 5px;
+      }
+      .fa-solid {
+        padding-left: 20px;
+      }
+
+      .search:hover #search-box {
+        transform: translateY(63px);
+        transition: 1s;
+      }
+      .right-elements a {
+        margin: 0px 18px;
+        right: 0;
+      }
+      .right-elements a i {
+        color: #2c2c2c;
+      }
+      .right-elements a i:hover {
+        color: red;
+        transition: all ease 0.3s;
+      }
+
+      /* -------------------------Section ---------------------------- */
+      section {
+        margin-left: 200px;
+        margin-top: 300px;
+        height: 600px;
+      }
+      article span {
+        padding: 10px;
+      }
+      article h2 {
+        color: #2c2c2c;
+        margin-top: 100px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+        font-style: normal;
+        margin-bottom: 20px;
+      }
+      article div {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .Size:focus {
+        background-color: gray;
+        color: #f8f8f8;
+      }
+      /* copy here form */
+      article .section-page {
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        display: inline;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        height: 50px;
+      }
+      .section-page i {
+        padding: 15px;
+        transition: 0.3;
+      }
+      .section-page i:hover {
+        background-color: #c8c8c8;
+        border-radius: 50%;
+      }
+      /* here */
+      .qty i {
+        padding: 15px;
+        transition: 0.3;
+      }
+      .qty i:hover {
+        background-color: #c8c8c8;
+        border-radius: 50%;
+      }
+
+      button {
+        margin-top: 5px;
+        margin: 5px;
+        margin-bottom: 30px;
+        width: 35px;
+        transition: 0.2s;
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        border-radius: 3px;
+        background-color: #ffffffff;
+        padding: 7px;
+      }
+      button a {
+        color: black;
+      }
+      .add-to-cart {
+        background-color: #2e2e2e;
+        padding-top: 10px;
+        color: #ffff;
+        font-size: 13px;
+        transition: 0.2s;
+        text-align: center;
+        width: 150px;
+        padding: 18px;
+        margin-left: 20px;
+        position: absolute;
+        top: 457px;
+        /* ------------------change top------------------ */
+      }
+      .add-to-cart:hover {
+        background-color: gray;
+        color: #f8f8f8;
+      }
+      .share-icon h3 {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        opacity: 0.7;
+      }
+
+      .share-icon i {
+        padding: 10px;
+        font-size: 20px;
+        color: #2c2c2c;
+        margin-top: 10px;
+        transition: 0.5s;
+      }
+      .share-icon i:hover {
+        background-color: #c8c8c8;
+        border-radius: 40px;
+        transform: translateY(-5px);
+      }
+      /* --------------------------------section ----------------------------*/
+      aside {
+        outline: none;
+        border: none;
+      }
+      aside img {
+        right: 100px;
+        top: 130px;
+        width: 600px;
+        height: 600px;
+        position: absolute;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        transition: 0.5s;
+      }
+      img:hover {
+        transform: translateY(-10px);
+      }
+
+      hr {
+        opacity: 0.3;
+      }
+      /*  */
+
+      /* cart */
+
+      .cart-badge {
+        width: 30px;
+        text-align: center;
+        position: absolute; /* Position badge relative to the nearest positioned ancestor (cart-icon) */
+        top: 10px; /* Adjust these values based on your design */
+        right: 85px; /* Adjust these values based on your design */
+        background-color: red;
+        color: white;
+        border-radius: 15px;
+        padding: 2px 6px;
+        font-size: 12px;
+        display: none; /* Initially hidden; shown only if items are in the cart */
+      }
+      /* ---------------------------------------------Header end------------------------------------------------------------ */
+
+      .cartTab {
+        border: 1px solid black;
+        width: 400px;
+        background-color: #fff;
+        position: absolute;
+        top: 0;
+
+        right: -400px;
+        transition: all 0.3s;
+        z-index: 200;
+        height: 1000px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: fixed;
+      }
+      /* Overlay to blur the background */
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1072px;
+        height: 100%;
+        opacity: 0.5;
+        background-color: #808080; /* Semi-transparent black */
+        backdrop-filter: blur(3px); /* Apply blur effect */
+        display: none; /* Hidden by default */
+        z-index: 999; /* Make sure it’s below the cart tab */
+      }
+
+      .cartTab .cartTabHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        background-color: #5a58583e;
+      }
+      .cartTabImage {
+        max-width: 70px;
+      }
+      .cartTabContentContainer {
+        flex-grow: 1;
+        max-height: 500px;
+        overflow-y: auto;
+      }
+      .cartTabContent {
+        margin-top: 17px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .cartTabFooter {
+        padding: 10px;
+        background-color: #f8f8f8;
+        border-top: 1px solid #ddd;
+        position: fixed;
+        bottom: 50px;
+        width: 100%;
+        box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+      }
+      .cartTabTotal {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      body.showCart .cartTab {
+        right: 0;
+      }
+
+      /* --------------------------------description section ----------------------------*/
+      h3 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        margin-bottom: 20px;
+      }
+      .Description {
+        margin-top: 50px;
+      }
+      .Description ul {
+        margin-left: 150px;
+        margin-bottom: 100px;
+      }
+      .Description ul li {
+        line-height: 30px;
+        font-size: 14px;
+        opacity: 0.6;
+      }
+      table {
+        margin-left: 150px;
+      }
+      th {
+        text-align: start;
+      }
+      td {
+        text-align: end;
+        letter-spacing: 2px;
+      }
+      th,
+      td {
+        line-height: 40px;
+        width: 200px;
+      }
+
+      /* <!-----------------------------------------------Footer Start------------------------------------------------------------  --> */
+      footer {
+        width: 100%;
+        margin-top: 70px;
+        height: 250px;
+      }
+      .wrapper {
+        margin-left: 100px;
+      }
+      footer ul {
+        float: left;
+        margin-left: 120px;
+      }
+      footer h4 {
+        font-size: 18px;
+        margin-left: 8px;
+        margin-bottom: 20px;
+        opacity: 0.7;
+      }
+      footer li {
+        font-size: 15px;
+        padding: 7px;
+        list-style: none;
+      }
+      footer ul .active {
+        opacity: 1;
+      }
+      footer ul li a {
+        opacity: 0.4;
+        color: black;
+        text-decoration: none;
+        transition: all ease 0.3s;
+      }
+      footer a:hover {
+        opacity: 1;
+      }
+
+      .content-icon {
+        float: right;
+        margin-right: 150px;
+      }
+      .content-icon h3 {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        opacity: 0.7;
+      }
+      .content-icon p {
+        max-width: 200px;
+        text-align: justify;
+        opacity: 0.8;
+      }
+      .content-icon i {
+        padding: 10px;
+        font-size: 20px;
+        color: #2c2c2c;
+        margin-top: 10px;
+
+        transition: 0.5s;
+      }
+      .content-icon i:hover {
+        background-color: #c8c8c8;
+        border-radius: 40px;
+        transform: translateY(-5px);
+      }
+      /* <!-----------------------------------------------Footer End------------------------------------------------------------  --> */
+    </style>
+  </head>
+  <body>
+    <!-- Header start -->
+    <header>
+      <nav>
+        <a href="../home.html" class="logo">LHB_CLUB</a>
+
+        <ul class="navbar">
+          <li><a href="../home.html" id="active" class="a">Home</a></li>
+          <li><a href="../aboutus.html" class="a">About</a></li>
+          <div class="dropdown">
+            <li><a href="#" class="a" id="brand1">Brand Categories</a></li>
+            <div class="content">
+              <a href="../nrf.html">NoReplacementFound</a>
+              <a href="../sisburma.html">Sisburma</a><br />
+              <a href="../stable_edge.html">StableEdge</a>
+            </div>
+          </div>
+          <li><a href="../contact.html" class="a">Contact</a></li>
+        </ul>
+
+        <div class="right-elements">
+          <!-- Cart Icon with Badge -->
+          <a href="#" class="cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <!-- Badge for cart item count, will be updated dynamically -->
+            <span class="cart-badge"></span>
+          </a>
+
+          <a href="../login.html" class="user">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <!-- Header end -->
+
+    <!-- Main Section start -->
+    <section>
+      <article>
+        <h2 id="product-name">NRF X BANX SYNESTHESIA T-SHIRT</h2>
+        <div id="product-price">Price: $120</div>
+        <label for="size">Size:</label>
+        <button class="Size" id="msize">M</button>
+        <button class="Size" id="lsize">L</button>
+        <button class="Size" id="xlsize">XL</button><br />
+        <div class="qty-add-to-cart">
+          <div class="section-page">
+            <i class="fa-solid fa-minus section-minus-button"></i>
+            <span id="sectionQuantity">1</span>
+            <i class="fa-solid fa-plus section-plus-button"></i>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="share-icon">
+          <label for="">Share:</label>
+
+          <a href="#" class="facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+
+          <a href="" class="instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="" class="x">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </article>
+
+      <aside>
+        <img src="../nrf-image/nrfxbanx1.jpg" alt="Product Image" />
+      </aside>
+    </section>
+    <!-- Main Section end -->
+    <div id="overlay" class="overlay"></div>
+    <div class="cartTab">
+      <div class="cardTabContaier" style="position: relative">
+        <div class="cartTabHeader">
+          <span style="font-size: 20px; color: black; padding: 15px">Card</span>
+
+          <i
+            class="fa-solid fa-xmark close"
+            style="font-size: 20px; color: black; padding: 15px"
+          ></i>
+        </div>
+        <div class="cartTabContentContainer">
+          <!-- items will be here -->
+        </div>
+        <div class="cartTabFooter">
+          <div class="cartTabTotal">
+            <p style="padding: 15px; margin-left: 6px">SubTotal:</p>
+            <span
+              style="color: black; position: absolute; margin-left: 305px"
+              class="CartTabSubTotalPrice"
+              >12000ks</span
+            >
+          </div>
+
+          <button
+            style="
+              width: 350px;
+              margin-left: 20px;
+              padding: 15px;
+              background-color: #2c2c2c;
+              color: #ffff;
+            "
+            id="checkout-button"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <section class="Description">
+      <h3>Description</h3>
+      <ul>
+        <li>NRF X BANX SYNESTHESIA T-SHIRT</li>
+        <li>Available Size : Medium, Large, Extra Large</li>
+        <li>Available Color: Black, White, Brown,</li>
+        <li>Material: Premium Air Layer Fabric</li>
+        <li>Website: LocalHypeBeastClub.com</li>
+        <li>Contact us: 09964774954</li>
+      </ul>
+
+      <h3>Additional information</h3>
+      <table>
+        <tr>
+          <th>Color</th>
+          <td>Black,Gray</td>
+        </tr>
+        <tr>
+          <th>Size</th>
+          <td>M,L,XL</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr />
+
+    <!-------------------------------footer start -------------------------------------------------------------------------->
+    <footer>
+      <div class="wrapper">
+        <ul>
+          <h4>Company</h4>
+          <li><a href="aboutus.html" class="active">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Store Location</a></li>
+          <li><a href="#">Carrers</a></li>
+        </ul>
+
+        <ul>
+          <h4>Help</h4>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">FAQ's</a></li>
+          <li><a href="delivert.html">Delivery Policy</a></li>
+          <li><a href="#">Return and Excahange Policy</a></li>
+        </ul>
+        <ul>
+          <h4>Store</h4>
+          <li><a href="#">Topwear</a></li>
+          <li><a href="#">Outer wear</a></li>
+          <li><a href="#">Pant</a></li>
+          <li><a href="#">Shoe</a></li>
+        </ul>
+
+        <div class="content-icon">
+          <h3>follow us</h3>
+          <p>
+            Keep up-to-date with our latest things by following us on our social
+            media channels.
+          </p>
+
+          <a href="#" class="facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+
+          <a href="" class="instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="" class="">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Select elements from the DOM
+      const sizeButtons = document.querySelectorAll(".Size");
+      const productImage = document.querySelector("aside img");
+      const addToCartButton = document.querySelector(".add-to-cart");
+      const cartIcon = document.querySelector(".cart i");
+      const body = document.querySelector("body");
+      const closeCart = document.querySelector(".close");
+      const cartBadge = document.querySelector(".cart-badge");
+      const overlay = document.getElementById("overlay");
+
+      // Variables to store selected details
+      let selectedSize = "";
+      let quantity = 1;
+      const pricePerItem = 120; // Price of the product
+      const productName = document.getElementById("product-name").textContent;
+      const productImageSrc = productImage.src;
+
+      // Initialize cart from local storage
+      let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      // Variables for the section page
+      const sectionQuantityElement = document.getElementById("sectionQuantity");
+      const sectionMinusButton = document.querySelector(
+        ".section-page .fa-minus"
+      );
+      const sectionPlusButton = document.querySelector(
+        ".section-page .fa-plus"
+      );
+
+      // Initialize quantity for section page
+      let sectionQuantity = parseInt(sectionQuantityElement.textContent, 10);
+
+      // Update quantity on the section page when minus button is clicked
+      sectionMinusButton.addEventListener("click", () => {
+        if (sectionQuantity > 1) {
+          sectionQuantity--; // Decrement quantity
+          sectionQuantityElement.textContent = sectionQuantity; // Update section span
+        }
+      });
+
+      // Update quantity on the section page when plus button is clicked
+      sectionPlusButton.addEventListener("click", () => {
+        sectionQuantity++; // Increment quantity
+        sectionQuantityElement.textContent = sectionQuantity; // Update section span
+      });
+
+      // Function to calculate and update the subtotal price
+      const updateTotalPrice = () => {
+        const totalPrice = cartItems.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+        document.querySelector(
+          ".CartTabSubTotalPrice"
+        ).textContent = `${totalPrice}$`;
+      };
+
+      // Function to update the cart badge
+      const updateCartBadge = () => {
+        const totalItems = cartItems.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        if (totalItems > 0) {
+          cartBadge.textContent = totalItems;
+          cartBadge.style.display = "block";
+        } else {
+          cartBadge.style.display = "none";
+        }
+      };
+
+      // checkout
+      document
+        .getElementById("checkout-button")
+        .addEventListener("click", function () {
+          // Assuming cartItems are stored in localStorage
+          const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+          // Check if cart has items before proceeding to checkout
+          if (cartItems.length > 0) {
+            // Optionally: Store any necessary data in sessionStorage (or URL parameters)
+            sessionStorage.setItem(
+              "cartCheckoutData",
+              JSON.stringify(cartItems)
+            );
+
+            // Navigate to the checkout page without a reload
+            window.location.href = "../checkout.html"; // Change this to your actual checkout page
+          } else {
+            alert(
+              "Your cart is empty. Please add items to the cart before proceeding."
+            );
+          }
+        });
+
+      // Function to render cart items
+      const renderCartItems = () => {
+        const cartTabContentContainer = document.querySelector(
+          ".cartTabContentContainer"
+        );
+        cartTabContentContainer.innerHTML = ""; // Clear existing items
+
+        cartItems.forEach((item, index) => {
+          const itemHTML = `
+          <div class="cartTabContent" style="width:400px;">
+          <div class="cartTabImage"><img src="
+          ${item.image}" alt="" style="width: 70px" /></div>
+       
+            <div style="max-width:200px; display:flex; flex-direction:column; align-items:start">
+
+           <div class="width:200px">
+             ${item.name}
+             </div>
+            
+          
+            <div style="margin-top:7px;">
+              Size: <span class="cartTabSize" >${item.size}</span> <br> 
+            </div>
+            <div class="qty" style="margin-left:-14px;">
+              <i class="fa-solid fa-minus" data-index="${index}"></i>
+              <span id="sp">${item.quantity}</span>
+              <i class="fa-solid fa-plus" data-index="${index}"></i>
+            </div>
+          </div >
+          <div style="display:flex; flex-direction:column; margin-bottom:24px;">
+            <i class="fa-solid fa-xmark close" style="font-size: 20px; color: black; padding: 15px;" data-index="${index}"></i><br />
+            <span class="cartTabPrice">${item.price * item.quantity}$</span>
+          </div>
+        </div>
+        <hr />
+      `;
+          cartTabContentContainer.insertAdjacentHTML("beforeend", itemHTML);
+        });
+
+        // Add event listeners for remove buttons
+        document
+          .querySelectorAll(".cartTabContent .close")
+          .forEach((button) => {
+            button.addEventListener("click", (event) => {
+              const index = event.target.getAttribute("data-index");
+              cartItems.splice(index, 1);
+              saveCartItems();
+              renderCartItems();
+              updateCartBadge();
+              updateTotalPrice(); // Update total price when item is removed
+            });
+          });
+
+        // Add event listeners for plus and minus buttons
+        document.querySelectorAll(".fa-minus").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const index = event.target.getAttribute("data-index");
+            if (cartItems[index].quantity > 1) {
+              cartItems[index].quantity -= 1;
+              saveCartItems();
+              renderCartItems();
+              updateCartBadge();
+              updateTotalPrice();
+            }
+          });
+        });
+
+        document.querySelectorAll(".fa-plus").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const index = event.target.getAttribute("data-index");
+            cartItems[index].quantity += 1;
+            saveCartItems();
+            renderCartItems();
+            updateCartBadge();
+            updateTotalPrice();
+          });
+        });
+
+        updateTotalPrice(); // Update total price when cart is rendered
+      };
+
+      // Function to load cart items from local storage
+      const loadCartItems = () => {
+        const savedCartItems = localStorage.getItem("cartItems");
+        if (savedCartItems) {
+          cartItems = JSON.parse(savedCartItems);
+        } else {
+          cartItems = [];
+        }
+      };
+
+      // Function to save cart items to local storage
+      const saveCartItems = () => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      };
+
+      // Load cart items and update badge when the page loads
+      window.addEventListener("load", () => {
+        loadCartItems();
+        updateCartBadge();
+        renderCartItems(); // Ensure the cart content is also rendered on page load
+      });
+
+      // Add to cart button functionality
+      addToCartButton.addEventListener("click", () => {
+        if (!selectedSize) {
+          alert("Please select a size.");
+          return;
+        }
+
+        // Check if item with the same name and size already exists in the cart
+        const existingItemIndex = cartItems.findIndex(
+          (item) => item.name === productName && item.size === selectedSize
+        );
+
+        if (existingItemIndex !== -1) {
+          // Item exists in cart with the same size, so update quantity
+          cartItems[existingItemIndex].quantity += sectionQuantity;
+        } else {
+          // Item does not exist, add new item
+          const newItem = {
+            name: productName,
+            size: selectedSize,
+            quantity: sectionQuantity,
+            price: pricePerItem,
+            image: productImageSrc,
+          };
+          cartItems.push(newItem);
+        }
+
+        // Save updated cart to localStorage
+        saveCartItems();
+        renderCartItems();
+        updateCartBadge();
+      });
+
+      // Add event listeners for size selection
+      sizeButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          sizeButtons.forEach((btn) => btn.classList.remove("active"));
+          this.classList.add("active");
+          selectedSize = this.textContent;
+        });
+      });
+
+      // Show and hide cart functionality
+      cartIcon.addEventListener("click", () => {
+        body.classList.toggle("showCart");
+        body.style.overflow = "hidden";
+        overlay.style.display = "block";
+      });
+
+      closeCart.addEventListener("click", () => {
+        body.classList.toggle("showCart");
+        body.style.overflow = "auto";
+        overlay.style.display = "none";
+      });
+
+      overlay.addEventListener("click", () => {
+        overlay.style.display = "none";
+        body.style.overflow = "auto";
+
+        body.classList.toggle("showCart");
+      });
+
+      // Background image change on hover
+      productImage.addEventListener("mouseover", () => {
+        productImage.src = "../nrf-image/nrfxbanx2.jpg";
+      });
+
+      productImage.addEventListener("mouseout", () => {
+        productImage.src = "../nrf-image/nrfxbanx1.jpg";
+      });
+
+      const msize = document.getElementById("msize");
+      const lsize = document.getElementById("lsize");
+      const xlsize = document.getElementById("xlsize");
+
+      msize.addEventListener("click", () => {
+        msize.style.backgroundColor = "gray";
+        msize.style.color = "white";
+
+        lsize.style.backgroundColor = "white";
+        lsize.style.color = "black";
+
+        xlsize.style.backgroundColor = "white";
+        xlsize.style.color = "black";
+      });
+      lsize.addEventListener("click", () => {
+        lsize.style.backgroundColor = "gray";
+        lsize.style.color = "white";
+
+        msize.style.backgroundColor = "white";
+        msize.style.color = "black";
+
+        xlsize.style.backgroundColor = "white";
+        xlsize.style.color = "black";
+      });
+      xlsize.addEventListener("click", () => {
+        xlsize.style.backgroundColor = "gray";
+        xlsize.style.color = "white";
+
+        lsize.style.backgroundColor = "white";
+        lsize.style.color = "black";
+
+        msize.style.backgroundColor = "white";
+        msize.style.color = "black";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="website icon" href="main-image/Snapseed.jpg">
+
+    <title>Local HypeBeast Club</title>
+</head>
+<body>
+    
+    <header>
+        <nav>
+            
+            <a href="home.html" class="logo">LHB_CLUB</a>
+
+            <ul class="navbar">
+                <li><a href="home.html" id="active" class="a">Home</a></li>
+                <li><a href="aboutus.html" class="a">About</a></li>
+                <div class="dropdown">
+                    
+                   <li><a href="#" class="a" id="brand1">Brand Categories</a></li> 
+                    <div class="content">
+                        <a href="nrf.html" >NoReplacementFound</a>
+                        <a href="sisburma.html">Sisburma</a><br>
+                        <a href="stable_edge.html">StableEdge</a>
+                    </div>
+
+                </div>
+                <li><a href="contact.html" class="a">Contact</a></li>
+               
+            </ul>
+
+            
+            <div class="right-elements">
+
+                <a href="#" class="search" id="searchIcon">
+                <!-- <input type="text" id="searchBar" placeholder="search" style="padding-left: 3px;"> -->
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+                
+                
+                <a href="#" class="cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge"></span>
+                </a>
+                
+                <a href="login.html" class="user">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+               
+            </div>
+
+        </nav>
+   
+    </header>
+
+        <div class="searchContainer">
+            <div class="searchContent">
+                
+         
+            <i class="fas fa-xmark" id="closeSearch"></i>
+           
+            <form class="form" >
+                <label for="search">
+                    <input required="" autocomplete="off" placeholder="search your products" id="searchBar" type="text">
+                    <div class="icon">
+                        <svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="swap-on">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                        <svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="swap-off">
+                            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                    </div>
+                    <button type="reset" class="close-btn">
+                        <svg viewBox="0 0 20 20" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </label>
+            </form>
+            <div class="productContainer">  
+                <!-- product will -->
+            </div>
+        </div>
+    </div>
+  
+    <!-- header end ---------------------------------------------------------------------------->
+
+      <!-- Main Section end -->
+    
+
+    <!-----------------------------------------------Main Section Start------------------------------------------------------------  -->
+        <section id="main">
+            
+            <div class="main-content">
+               
+                <div class="main-text">
+                    <span>Collection</span>
+                    <h1>Stay Hype With <br> Local HypeBeast Club</h1>
+                    <p>Welcome to <strong>Local HypeBeast Club</strong>, where fashion meets passion! Our boutique is a haven for style enthusiasts seeking a curated collection of trendy and timeless clothing. At <b>LHB_CLUB</b>, we believe that fashion is an art form, and our carefully selected pieces reflect the latest trends while embracing individuality.</p>
+                    <a href="shop.html">Shop Now</a>
+                </div>
+                
+                    <div class="main-img">
+                        <video src="main-image/IMG_8322.MP4" autoplay muted loop width="100%" style="box-shadow: 10px 10px 30px black;"></video>
+
+                    </div>
+    
+                
+            </div>
+    
+        </section>
+
+        <div id="overlay" class="overlay"></div>
+        <div class="cartTab">
+          <div class="cardTabContaier" style="position: relative">
+            <div class="cartTabHeader">
+              <span style="font-size: 20px; color: black; padding: 15px">Card</span>
+    
+              <i
+                class="fa-solid fa-xmark close"
+                style="font-size: 20px; color: black; padding: 15px;cursor: pointer;"
+              ></i>
+            </div>
+            <div class="cartTabContentContainer">
+              <!-- items will be here -->
+            </div>
+            <div class="cartTabFooter">
+              <div class="cartTabTotal">
+                <p style="padding: 15px; margin-left: 6px">SubTotal:</p>
+                <span
+                  style="color: black; position: absolute; margin-left: 305px"
+                  class="CartTabSubTotalPrice"
+                  >12000ks</span
+                >
+              </div>
+    
+              <button
+                style="
+                  width: 350px;
+                  margin-left: 20px;
+                  padding: 15px;
+                  background-color: #2c2c2c;
+                  color: #ffff;
+                "
+                id="checkout-button"
+              >
+                Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+    
+         <!-----------------------------------------------Main Section end------------------------------------------------------------  -->
+
+
+
+        <!-----------------------------------------------Vedio Section end------------------------------------------------------------  -->
+         <section class="video-section">
+            <div class="video">
+                <video src="main-image/gg.Mp4" autoplay muted loop width="100%" controls></video>
+            </div>
+            <a href="shop.html" id="video-shop-now"> Shop Now</a>
+         </section>
+      <!-----------------------------------------------Vedio Section end------------------------------------------------------------  -->
+         
+        <h2>New Products</h2>
+
+
+
+        <!-- NRF section------------------------------------------------------------>
+        <section>
+
+        <header class="logoo">
+           <a href="nrf.html"> <h1 align="center"><span>N</span>o<span>R</span>eplacement<span>F</span>ound</h1></a>
+            <img src="nrf-image/logo.JPG" style="width: 100px; height: 100px; margin-top: 40px;">
+        </header>
+        
+            <div class="Container">
+                <div class="brand-img">
+                    <img id="img1" src="nrf-image/nrf-home-cart-1.jpeg">
+                    <div class="info">
+                        <a href="nrf-cart/nrf-home-cart-1.html"><button>Ouick View</button></a>
+                    </div>    
+                </div>
+                <p>NRF X YANGOOD HOODIE<br>
+                    PRICE:$120 
+                </p>   
+                   
+                    
+                
+            </div>
+            <div class="Container">
+                <div class="brand-img">
+                     <img id="img2"  src="nrf-image/nrf-home-cart-3.jpeg">
+                    <div class="info">
+                        <a href="nrf-cart/nrf-home-cart-2.html"><button>Ouick View</button></a>
+                    </div>
+                </div>
+                <p>NRF X YANGOOD T-Shirt<br>
+                    PRICE:$120 
+                </p>
+                    
+                
+            </div>
+            <div class="Container">
+                <div class="brand-img ">
+                    <img id="img3" src="nrf-image/nrf-home-cart-5.jpeg"> 
+                    <div class="info">
+                        <a href="nrf-cart/nrf-home-cart-3.html"><button>Ouick View</button></a>
+                    </div>
+                </div>
+                <p>NRF X YANGOOD REVERSIBLE TOTE BEG<br>
+                    PRICE:$120 
+                </p> 
+                    
+            
+            </div>
+            <div class="Container">
+                <div class="brand-img">
+                    <img id="img4" src="nrf-image/nrf-home-cart-7.jpeg"> 
+                    <div class="info">
+                        <a href="nrf-cart/nrf-home-cart-4.html"><button>Ouick View</button></a>
+                    </div>
+                </div>
+                <p>NRF X YANGOOD MESSENGER BEG <br>
+                    PRICE:$120 
+                </p>
+                   
+             
+    
+            </div>
+        </section>
+
+
+    <!-- NRF section end --------------------------------------------------------------------------->
+       
+
+
+
+
+     <!-- SISBurma section start -------------------------------------------------------------------------->
+        <section>
+            <header class="logoo">
+                
+               <a href="sisburma.html"> <img src="sisimage/sis_burma_logo.png" style="width: 130px; height: 130px; margin-top: 40px; cursor: pointer;"></a>
+            </header>
+            
+                <div class="Container">
+                    <div class="brand-img">
+                        <img id="img5" src="sisimage/SISBURMA AUBURNSTOMP...jpeg">
+                        <div class="info">
+                           <a href="sis-cart/sisburma-home-cart-1.html"><button>Ouick View</button></a>
+                        </div>  
+                    </div>
+                    <p>SISBURMA AUBURNSTOMP  <br>
+                        PRICE:$120
+                    </p>
+                        
+                  
+                </div>
+                <div class="Container">
+                    <div class="brand-img">
+                         <img id="img6" src="sisimage/The Sisburma Styling bag .jpeg">
+                        <div class="info">
+                           <a href="sis-cart/sisburma-home-cart-2.html"><button>Ouick View</button></a>
+                        </div>
+                    </div>
+                    <p> The Sisburma Styling Bag<br>
+                        PRICE:$120
+                    </p>
+                        
+                    
+                </div>
+                <div class="Container">
+                    <div class="brand-img">
+                        <img id="img7"  src="sisimage/Sisburma Giraffe Jacket 2colors.jpeg" > 
+                        <div class="info">
+                            <a href="sis-cart/sisburma-home-cart-3.html"><button>Ouick View</button></a>
+                        </div>
+                    </div>
+                    <p>Sisburma Giraffe Jacket <br>
+                        PRICE:$ 120 
+                    </p>
+                        
+                    
+                </div>
+                <div class="Container">
+                    <div class="brand-img">
+                        <img id="img8" src="sisimage/Sisburma Water-proof Nylon Parachute Pant black.jpeg" > 
+                        <div class="info">
+                            <a href="sis-cart/sisburma-home-cart-4.html"><button>Ouick View</button></a>
+                        </div>
+                    </div>
+                    <p>Sisburma Water-proof Nylon Parachute Pant <br>
+                        PRICE:$120
+                    </p>
+                        
+                    
+                </div>
+        
+        </section>
+
+            <!-- SISBurma section end -------------------------------------------------------------------------->
+            
+    
+
+         <!-- Stable Edge section start -------------------------------------------------------------------------->
+
+        <section id="StableEdge-Section">
+             <header class="logoo">
+               <a href="stable_edge.html"><h1 align="center">Stable Edge</a>      
+             </header>
+
+            <div class="Container">
+                <div class="brand-img">
+                    <img id="img9" src="SEimage/NO STABLE EDGE, NO CRY T-SHIRT1.jpeg">
+                    <div class="info">
+                        <a href="se-cart/stable-home-cart-1.html"><button>Ouick View</button></a>
+                    </div>    
+                </div>
+                <p>No Stable Edge, No Cry T-Shirt<br>
+                    PRICE:$120 
+                </p>
+                   
+            </div>
+            <div class="Container">
+                <div class="brand-img">
+                     <img id="img10" src="SEimage/STABLE EDGE BACKPACK1.jpeg">
+                    <div class="info">
+                      <a href="se-cart/stable-home-cart-2.html"><button>Ouick View</button></a>  
+                    </div>
+                </div>
+                <p>Stable Edge BackPack<br>
+                    PRICE:$120 
+                </p>
+                    
+                
+            </div>
+            <div class="Container">
+                <div class="brand-img">
+                    <img id="img11" src="SEimage/Coach1.jpeg"> 
+                    <div class="info">
+                      <a href="se-cart/stable-home-cart-3.html"><button>Ouick View</button></a>  
+                    </div>
+                </div>
+                <p>Coach <br>
+                    PRICE:$120
+                </p> 
+                    
+                
+            </div>
+            <div class="Container">
+                <div class="brand-img">
+                    <img id="img12" src="SEimage/Contrast stitch hoodie1.jpg" > 
+                    <div class="info">
+                        <a href="se-cart/stable-home-cart-4.html"><button>Ouick View</button></a>
+                    </div>
+                </div>
+                <p>Contrast stitch Hoodie <br>
+                    PRICE:$120
+                </p>
+                
+            </div>
+        </section>
+    <!-------------------------------Stable Edge section end -------------------------------------------------------------------------->
+
+
+    <button id="to-top" class="to-top-btn">
+        <img src="main-image/up-arrow.png" alt="" />
+      </button>
+
+     <!-------------------------------footer start -------------------------------------------------------------------------->
+    <footer>
+        <div class='wrapper'>
+                <ul>
+                    <h4>Company</h4>
+                    <li><a href="aboutus.css" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Store Location</a></li>
+                    <li><a href="#">Carrers</a></li>
+                </ul>
+            
+                <ul>
+                    <h4>Help</h4>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="delivert.html">Delivery Policy</a></li>
+                    <li><a href="#">Return and Excahange Policy</a></li>
+                </ul>
+                <ul>
+                    <h4>Store</h4>
+                    <li><a href="#">Topwear</a></li>
+                    <li><a href="#">Outer wear</a></li>
+                    <li><a href="#">Pant</a></li>
+                    <li><a href="#">Shoe</a></li>
+                </ul>
+
+                <div class="content-icon">
+                    <h3>follow us</h3>
+                    <p>Keep up-to-date with our latest things by following us on our social media channels.</p>
+
+                    <a href="#" class="facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    
+                    <a href="" class="instagram">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    
+                    <a href="" class="x">
+                        
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+                
+       
+     <!-------------------------------footer end -------------------------------------------------------------------------->
+     <script src="js/home.js"></script>
+</body>
+
+</html>

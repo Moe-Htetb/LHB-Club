@@ -1,0 +1,429 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* -------------------------Header start----------------------- */
+.logo {
+  font-size: 30px;
+  color: #e74444;
+  font-weight: bold;
+}
+
+nav {
+  position: absolute;
+  display: flex;
+  z-index: 20;
+  justify-content: space-between;
+  padding: 20px 20px;
+  position: fixed;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background-color: white;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  column-gap: 5rem;
+}
+.navbar li {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.navbar a {
+  color: black;
+  font-size: 17px;
+}
+.navbar .a::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: #e74444;
+  left: 0%;
+  bottom: -1px;
+  transition: 0.5s;
+}
+.navbar .a:hover::after {
+  width: 100%;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown #brand1 {
+  font-size: 17px;
+  display: block;
+  color: black;
+}
+.dropdown .content {
+  background-color: #ffffffff;
+  display: none;
+  position: absolute;
+  left: -20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.dropdown:hover .content {
+  top: 29px;
+  display: block;
+  padding: 8px 20px;
+  line-height: 30px;
+}
+
+.dropdown a {
+  font-size: 14px;
+  color: black;
+  letter-spacing: 1px;
+  padding: 1px 3px;
+}
+.content a:hover {
+  color: white;
+  background-color: #e74444;
+  opacity: 1;
+  border-radius: 2px;
+}
+.right-elements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-box {
+  width: 200px;
+  transition: 0.5s;
+  top: -40px;
+  right: 210px;
+  position: absolute;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+}
+.fa-solid {
+  padding-left: 20px;
+}
+
+.search:hover #search-box {
+  transform: translateY(63px);
+  transition: 1s;
+}
+.right-elements a {
+  margin: 0px 18px;
+  right: 0;
+}
+.right-elements a i {
+  color: #2c2c2c;
+}
+.right-elements a i:hover {
+  color: red;
+  transition: all ease 0.3s;
+}
+/* ---------------------------------------------Header end------------------------------------------------------------ */
+
+/* cart */
+.cart-badge {
+  width: 30px;
+  text-align: center;
+  position: absolute; /* Position badge relative to the nearest positioned ancestor (cart-icon) */
+  top: 10px; /* Adjust these values based on your design */
+  right: 85px; /* Adjust these values based on your design */
+  background-color: red;
+  color: white;
+  border-radius: 15px;
+  padding: 2px 6px;
+  font-size: 12px;
+  display: none; /* Initially hidden; shown only if items are in the cart */
+}
+
+.cartTab {
+  border: 1px solid black;
+  width: 400px;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+
+  right: -400px;
+  transition: all 0.3s;
+  z-index: 200;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: fixed;
+}
+/* Overlay to blur the background */
+.qty i {
+  padding: 15px;
+  transition: 0.3;
+}
+.qty i:hover {
+  background-color: #c8c8c8;
+  border-radius: 50%;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1072px;
+  height: 100%;
+  opacity: 0.5;
+  background-color: #808080; /* Semi-transparent black */
+  backdrop-filter: blur(3px); /* Apply blur effect */
+  display: none; /* Hidden by default */
+  z-index: 999; /* Make sure it’s below the cart tab */
+}
+
+.cartTab .cartTabHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background-color: #5a58583e;
+}
+.cartTabContentContainer {
+  flex-grow: 1;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.cartTabContent {
+  margin-top: 17px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cartTabFooter {
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+.cartTabTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body.showCart .cartTab {
+  right: 0;
+}
+
+/* --------------------------------Content Start------------------------------------------ */
+
+content {
+  max-width: 800px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: relative;
+  top: 80px;
+}
+
+/* --------------------------------Content End------------------------------------------ */
+
+/* <!------------------------------------- about-us-section Start----------------------------------------------> */
+.about-us-section {
+  background: url(../main-image/IMG_5174.JPG) center/cover;
+  height: 720px;
+  margin-bottom: 100px;
+}
+.about-us-content {
+  position: absolute;
+  top: 130px;
+  left: 380px;
+}
+.about-us-section h2 {
+  font-size: 30px;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+}
+.about-us-section p {
+  padding: 50px;
+  max-width: 800px;
+  text-align: justify;
+  background-color: rgba(230, 229, 229, 0.599);
+}
+
+/* <!------------------------------------- about-us-section Start----------------------------------------------> */
+
+/* <!------------------------------------- introduction-section Start----------------------------------------------> */
+.introduction-section {
+  display: flex;
+  align-items: center;
+}
+.introduction-section h2 {
+  position: absolute;
+  right: 220px;
+  top: 900px;
+  text-transform: uppercase;
+}
+.introduction-section img {
+  width: 900px;
+  height: 600px;
+  border-radius: 10px;
+  margin-left: 60px;
+}
+.introduction-section p {
+  max-width: 400px;
+  text-align: justify;
+  margin-left: 30px;
+}
+
+/* <!------------------------------------- Introduction-us-section End---------------------------------------------> */
+
+/* <!----------------------------------------------Future-section Start------------------------------------------------------------  --> */
+
+.future-section {
+  background: url(../main-image/IMG_5321.JPG) center/cover;
+  margin-top: 100px;
+  width: 100%;
+  height: 700px;
+  display: flex;
+  margin-bottom: 100px;
+}
+.future-content h2,
+.our-intention h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.future-content,
+.our-intention {
+  margin: 150px;
+}
+.future-content p,
+.our-intention p {
+  max-width: 400px;
+  text-align: justify;
+  padding: 30px;
+  background-color: rgba(230, 229, 229, 0.599);
+}
+
+/* <!----------------------------------------------Future-section End------------------------------------------------------------  --> */
+
+/* <!-----------------------------------------------Member-section Start------------------------------------------------------------  --> */
+
+.member-section h2 {
+  left: 660px;
+  margin-top: 30px;
+  position: absolute;
+  text-transform: uppercase;
+}
+.member-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: rgba(230, 229, 229, 0.599);
+  height: 500px;
+}
+.random-item {
+  height: 300px;
+  width: 600px;
+  padding: 15px;
+  margin: auto 50px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+.random-item img {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.random-item p {
+  margin-top: 30px;
+  font-size: 13px;
+  text-align: center;
+}
+.random-item:hover {
+  transform: translateY(-5px);
+}
+.random-item:hover img {
+  transform: scale(1.1);
+}
+
+/* <!-----------------------------------------------Member-section End------------------------------------------------------------  --> */
+
+/* <!-----------------------------------------------Footer Start------------------------------------------------------------  --> */
+footer {
+  width: 100%;
+  margin-top: 130px;
+  height: 250px;
+}
+.wrapper {
+  margin-left: 100px;
+}
+footer ul {
+  float: left;
+  margin-left: 120px;
+}
+footer h4 {
+  font-size: 18px;
+  margin-left: 8px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+footer li {
+  font-size: 15px;
+  padding: 7px;
+  list-style: none;
+}
+footer ul .active {
+  opacity: 1;
+}
+footer ul li a {
+  opacity: 0.4;
+  color: black;
+  text-decoration: none;
+  transition: all ease 0.3s;
+}
+footer a:hover {
+  opacity: 1;
+}
+
+.content-icon {
+  float: right;
+  margin-right: 150px;
+}
+.content-icon h3 {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+.content-icon p {
+  max-width: 200px;
+  text-align: justify;
+  opacity: 0.8;
+}
+.content-icon i {
+  padding: 10px;
+  font-size: 20px;
+  color: #2c2c2c;
+  margin-top: 10px;
+  transition: 0.5s;
+}
+.content-icon i:hover {
+  background-color: #c8c8c8;
+  border-radius: 40px;
+  transform: translateY(-5px);
+}
+/* <!-----------------------------------------------Footer End------------------------------------------------------------  --> */

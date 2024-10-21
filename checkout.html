@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/checkout.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="home.html" class="logo">LHB_CLUB</a>
+
+        <ul class="navbar">
+          <li><a href="home.html" id="active" class="a">Home</a></li>
+          <li><a href="aboutus.html" class="a">About</a></li>
+          <div class="dropdown">
+            <li><a href="#" class="a" id="brand1">Brand Categories</a></li>
+            <div class="content">
+              <a href="nrf.html">NoReplacementFound</a>
+              <a href="sisburma.html">Sisburma</a><br />
+              <a href="stable_edge.html">StableEdge</a>
+            </div>
+          </div>
+          <li><a href="contact.html" class="a">Contact</a></li>
+        </ul>
+
+        <div class="right-elements">
+          <a href="login.html" class="user">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- header end------------ -->
+    <section class="main">
+      <div class="billing-container">
+        <div class="header">
+          <h2>Billing details</h2>
+          <a href="home.html" class="back-to-cart">← Back to Cart</a>
+        </div>
+        <form class="billing-form">
+          <div class="form-row">
+            <div class="input-group">
+              <input type="text" required class="sit" />
+              <label for="">First name *</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" required class="sit" />
+              <label for="">Last name *</label>
+            </div>
+          </div>
+
+          <div class="inputs">
+            <input type="text" required class="sit" />
+            <label for="">Street address *</label>
+          </div>
+
+          <div class="inputs">
+            <input type="text" required />
+            <label for="">Apartment, suite, unit, etc.</label>
+          </div>
+
+          <div class="inputs">
+            <input type="text" required class="sit" />
+            <label for="">State *</label>
+          </div>
+
+          <div class="inputs">
+            <input type="text" required class="sit" />
+            <label for="">Email address</label>
+          </div>
+
+          <div class="inputs">
+            <input type="text" required />
+            <label for="">Account number</label>
+          </div>
+
+          <div class="inputs">
+            <input type="text" required class="sit" />
+            <label for="">Phone</label>
+          </div>
+        </form>
+      </div>
+
+      <div class="checkout-container">
+        <div id="order-items-container"></div>
+        <!-- This is where items will be dynamically added -->
+
+        <div class="summary">
+          <div class="summary-line">
+            <p>SUBTOTAL</p>
+            <p id="subtotal"></p>
+          </div>
+          <div class="summary-line">
+            <p>SHIPPING</p>
+            <p>Flat rate: $10</p>
+          </div>
+          <div class="total-line">
+            <p>TOTAL</p>
+            <p id="total-price"></p>
+          </div>
+        </div>
+
+        <div class="payment-options">
+          <label class="payment-option">
+            <input type="radio" name="payment-method" value="cod" checked />
+            Cash on delivery
+            <span class="description">Pay with cash upon delivery.</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment-method" value="bank-transfer" />
+            Kpay Payment
+            <img src="main-image/kpay.png" class="dinger-logo" />
+            <span class="description"
+              >Kpay Phone Number: 09964774954 <br />
+              Username: Moe Htet Oo
+            </span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment-method" value="bank-transfer" />
+            Wave Payment
+            <img src="main-image/wave.jpeg" class="dinger-logo" />
+            <span class="description"
+              >Wave Phone Number: 09964774954 <br />
+              Username: Moe Htet Oo
+            </span>
+          </label>
+        </div>
+
+        <p class="privacy-policy">
+          Your personal data will be used to process your order, support your
+          experience throughout this website, and for other purposes described
+          in our
+          <a href="#">privacy policy</a>.
+        </p>
+
+        <div class="terms">
+          <input type="checkbox" id="agree-terms" required />
+          <label for="agree-terms">
+            I have read and agree to the website
+            <a href="#">terms and conditions</a> *
+          </label>
+        </div>
+        <button class="place-order-button">Place order</button>
+      </div>
+    </section>
+    <script>
+      // Function to dynamically populate the checkout page with cart items
+      const renderCheckoutItems = () => {
+        const orderItemsContainer = document.getElementById(
+          "order-items-container"
+        );
+        const cartItems =
+          JSON.parse(sessionStorage.getItem("cartCheckoutData")) || [];
+
+        let subtotal = 0;
+
+        // Clear the container before rendering
+        orderItemsContainer.innerHTML = "";
+
+        // If no items in cart, notify user
+        if (cartItems.length === 0) {
+          orderItemsContainer.innerHTML =
+            "<p>Your cart is empty. Please add items to the cart.</p>";
+          return;
+        }
+
+        // Iterate over each cart item to create its HTML and calculate the subtotal
+        cartItems.forEach((item) => {
+          const itemHTML = `
+        <div class="order-item">
+          <img src="${item.image}" alt="Product Image" class="product-image" />
+          <div class="item-details">
+            <p class="product-name">${item.name}</p>
+            <span class="price">${item.price} $</span><br />
+            <div class="quan">
+              <span class="size">${item.size}</span>
+              <span class="quantity" style="color: white">
+                <i class="fas fa-xmark"> </i> <span class="number">${item.quantity}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      `;
+
+          // Insert the product HTML into the container
+          orderItemsContainer.insertAdjacentHTML("beforeend", itemHTML);
+
+          // Update subtotal for the current item
+          subtotal += item.price * item.quantity;
+        });
+
+        // Set the subtotal and total including shipping
+        const shippingCost = 10; // Flat rate shipping
+        document.getElementById("subtotal").textContent = `$ ${subtotal}`;
+        document.getElementById("total-price").textContent = `$ ${
+          subtotal + shippingCost
+        }`;
+      };
+
+      // Call the renderCheckoutItems function when the checkout page loads
+      window.addEventListener("DOMContentLoaded", renderCheckoutItems);
+      const checkBtn = document.querySelector(".place-order-button");
+      const inputs = document.querySelectorAll(".sit");
+
+      checkBtn.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        let allFieldsFilled = true;
+
+        // Check if all inputs have a value
+        inputs.forEach((input) => {
+          if (input.value.trim() === "") {
+            allFieldsFilled = false; // If any field is empty, set this to false
+          }
+        });
+
+        // Check if the user agreed to the terms and conditions
+        const agreeTerms = document.getElementById("agree-terms").checked;
+
+        // Validate form
+        if (!allFieldsFilled) {
+          alert("Please fill in all the required information.");
+        } else if (!agreeTerms) {
+          alert("Please agree to the terms and conditions.");
+        } else {
+          // If everything is valid, show success message
+          alert("Complete Order");
+
+          // Clear the cart data and update the UI
+          sessionStorage.removeItem("cartCheckoutData");
+
+          // Reset the cart badge to zero
+          document.querySelector(".cart-badge").textContent = "0";
+
+          // Reset the subtotal and total price
+          document.getElementById("subtotal").textContent = "$ 0";
+          document.getElementById("total-price").textContent = "$ 0";
+
+          // Clear the order items from the UI
+          document.getElementById("order-items-container").innerHTML =
+            "<p>Your cart is empty. Please add items to the cart.</p>";
+        }
+      });
+    </script>
+  </body>
+</html>
